@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Сайт про блоки </title>
+		<meta charset = "utf-8">
+		<style>
+		html {
+			text-align: center;
+			font-size: 22px;
+		}
+		span {
+			display: block;
+			padding-top: 15px;
+		}
+		#header{
+			width: 100%;
+			background-color: orange;
+			height: 60px;
+			margin: auto;
+			position: fixed;
+			z-index: 1;
+		}
+		#sidebar{
+			background-color: #ddd;
+		}
+		#main{
+			padding-top: 60px;
+			max-width: 960px;
+			margin: 60px;
+			background-color: gray;
+			height: 800px;
+			position: relative;
+					
+		}
+		#footer{
+			width: 100%;
+			background-color: red;
+			height: 60px;
+		}
+		
+		#block1, #block2 {
+			width: 300px;
+			height: 80px;
+			position: absolute;
+			
+		}
+		#block1 {
+			background-color: red;
+			margin-top: 500px;
+			margin-left: 150px;
+			z-index: 2;
+		}
+
+		#block2 {
+			background-color: green;
+			margin-top: 450px;
+			margin-left: 300px;
+
+		}
+
+		
+			
+		</style>
+	</head>
+	<body>
+		<div align = "center" id="header">БЛОЧНЫЕ БЛОКИ, СУПЕР-БЛОКИ</div>
+		<div id="main"><span>Основное содержимое</span>
+
+			<div id="block2"><span>Женя так себе фронтендер</span></div>
+			<div id="block1"><span>Люба Супер фронтендер</span></div>
+		</div>
+		<div id="footer"><span>Футер</span></div>
+	</body>
+</html>
