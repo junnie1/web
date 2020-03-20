@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>third task</title>
+	</head>
+	<body>
+		<script>
+			for (let i = 0; i < 15; i++){
+				let form = document.createElement('form');
+				form.name = `Форма ${i + 1}`;
+				form.id = i;
+				document.body.append(form); 
+			}
+			
+			document.write('Список имен четных форм:<br>');
+			for (let i = 0; i < document.body.getElementsByTagName('form').length; i++){
+				if ((i + 1) % 2 == 0){
+					document.write(document.body.getElementsByTagName('form').item(i).name + '<br>');
+				}
+			}
+			document.write('<br>');
+
+			
+
+			for (let i = 0; i < document.body.getElementsByTagName('form').length; i++){
+				let inputText = document.createElement('input');
+				inputText.type = 'text';
+				inputText.id = inputText.type + "_" + i;
+				let inputCheckBox = document.createElement('input');
+				inputCheckBox.type = 'checkbox';
+				inputCheckBox.id = inputCheckBox.type + '_' + i;
+				let inputImage = document.createElement('input');
+				inputImage.type = 'image';
+				inputImage.id = inputImage.type + '_' + i;
+				let inputUrl = document.createElement('input');
+				inputUrl.type = 'url';
+				inputUrl.id = inputUrl.type + '_' + i;
+				let inputTime = document.createElement('input');
+				inputTime.type = 'time';
+				inputTime.id = inputTime.type + '_' + i;
+				switch(i % 5){
+					case 0:
+						document.body.getElementsByTagName('form').item(i).appendChild(inputText);
+						document.body.getElementsByTagName('form').item(i).appendChild(inputTime);
+						document.body.getElementsByTagName('form').item(i).appendChild(inputUrl);
+						document.body.getElementsByTagName('form').item(i).appendChild(inputImage);
+						document.body.getElementsByTagName('form').item(i).appendChild(inputCheckBox);
+						break;
+					case 1:
+						document.body.getElementsByTagName('form').item(i).appendChild(inputText);
+						document.body.getElementsByTagName('form').item(i).appendChild(inputTime);
+						document.body.getElementsByTagName('form').item(i).appendChild(inputUrl);
+						document.body.getElementsByTagName('form').item(i).appendChild(inputImage);
+						break;
+					case 2:
+						document.body.getElementsByTagName('form').item(i).appendChild(inputText);
+						document.body.getElementsByTagName('form').item(i).appendChild(inputTime);
+						document.body.getElementsByTagName('form').item(i).appendChild(inputUrl);
+						break;
+					case 3:
+						document.body.getElementsByTagName('form').item(i).appendChild(inputText);
+						document.body.getElementsByTagName('form').item(i).appendChild(inputTime);
+						break;
+					case 4:
+						document.body.getElementsByTagName('form').item(i).appendChild(inputText);
+						break;
+
+				};
+				let buttonShowName = document.createElement('button');
+				buttonShowName.type = 'button';
+				buttonShowName.innerText = 'Показать имя формы';
+				buttonShowName.id = buttonShowName.innerText + i;
+				buttonShowName.style.padding = '10px';
+				buttonShowName.style.borderRadius = '15px';
+				buttonShowName.style.backgroundColor = 'green';
+				buttonShowName.style.color = 'white';
+				let imgShowName = document.createElement('img');
+				imgShowName.style.width = '20px';
+				imgShowName.style.height = '17px';
+				imgShowName.style.float = 'left';
+				imgShowName.style.paddingRight = '5px';
+				imgShowName.src = './1.jpg';
+				buttonShowName.appendChild(imgShowName);
+				buttonShowName.onclick = function() {
+					alert(buttonShowName.innerText);
+					//alert(buttonShowName.parentElement.name);
+				}
+				buttonShowName.onmouseover = function() {
+					buttonShowName.style.backgroundColor = 'red';
+				}
+				buttonShowName.onmouseout = function() {
+					buttonShowName.style.backgroundColor = 'green';
+				}
+				document.body.getElementsByTagName('form').item(i).appendChild(buttonShowName);
+
+				let buttonAccessory = document.createElement('button');
+				buttonAccessory.type = 'button';
+				buttonAccessory.innerText = 'Принадлежность';
+				buttonAccessory.id = buttonAccessory.innerText + i;
+				buttonAccessory.style.padding = '10px';
+				buttonAccessory.style.borderRadius = '15px';
+				buttonAccessory.style.backgroundColor = 'green';
+				buttonAccessory.style.color = 'white';
+				let imgAccessory = document.createElement('img');
+				imgAccessory.style.width = '20px';
+				imgAccessory.style.height = '17px';
+				imgAccessory.style.float = 'left';
+				imgAccessory.style.paddingRight = '5px';
+				imgAccessory.src = './2.jpg';
+				buttonAccessory.appendChild(imgAccessory);
+				buttonAccessory.onclick = function() {
+					alert(buttonAccessory.parentElement.id);
+				}
+				buttonAccessory.onmouseover = function() {
+					buttonAccessory.style.backgroundColor = 'red';
+				}
+				buttonAccessory.onmouseout = function() {
+					buttonAccessory.style.backgroundColor = 'green';
+				}
+				document.body.getElementsByTagName('form').item(i).appendChild(buttonAccessory);
+
+				let buttonReset = document.createElement('button');
+				buttonReset.type = 'reset';
+				buttonReset.innerText = 'Сбросить';
+				buttonReset.id = buttonReset.innerText + i;
+				buttonReset.style.padding = '10px';
+				buttonReset.style.borderRadius = '15px';
+				buttonReset.style.backgroundColor = 'green';
+				buttonReset.style.color = 'white';
+				let imgReset = document.createElement('img');
+				imgReset.style.width = '20px';
+				imgReset.style.height = '17px';
+				imgReset.style.float = 'left';
+				imgReset.style.paddingRight = '5px';
+				imgReset.src = './3.jpg';
+				buttonReset.appendChild(imgReset);
+				buttonReset.onmouseover = function() {
+					buttonReset.style.backgroundColor = 'red';
+				}
+				buttonReset.onmouseout = function() {
+					buttonReset.style.backgroundColor = 'green';
+				}
+				document.body.getElementsByTagName('form').item(i).appendChild(buttonReset);
+
+
+				let buttonCountFields = document.createElement('button');
+				buttonCountFields.type = 'button';
+				buttonCountFields.innerText = 'Показать количество полей';
+				buttonCountFields.id = buttonCountFields.innerText + i;
+				buttonCountFields.style.padding = '10px';
+				buttonCountFields.style.borderRadius = '15px';
+				buttonCountFields.style.backgroundColor = 'green';
+				buttonCountFields.style.color = 'white';
+				let imgCountFields = document.createElement('img');
+				imgCountFields.style.width = '20px';
+				imgCountFields.style.height = '17px';
+				imgCountFields.style.float = 'left';
+				imgCountFields.style.paddingRight = '5px';
+				imgCountFields.src = './4.jpg';
+				buttonCountFields.appendChild(imgCountFields);
+				buttonCountFields.onclick = function() {
+					//alert(buttonCountFields.parentElement.children.length);
+					alert(buttonCountFields.parentElement.getElementsByTagName('input').length);
+				}
+				buttonCountFields.onmouseover = function() {
+					buttonCountFields.style.backgroundColor = 'red';
+				}
+				buttonCountFields.onmouseout = function() {
+					buttonCountFields.style.backgroundColor = 'green';
+				}
+				document.body.getElementsByTagName('form').item(i).appendChild(buttonCountFields);
+			}
+
+
+		</script>
+	</body>
+</html>

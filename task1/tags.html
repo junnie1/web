@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>second task</title>
+	</head>
+	<body>
+		<script>
+			let j = 0; //счетчик			
+			document.write('Список анкоров:<br>');
+			for (let i = 0; i < 5; i++){
+				let link = document.createElement('link');
+				document.body.append(link);
+				link.href = `https://vk.com/unchikovallet${i+1}`;
+				link.innerText = link.href;
+				if (i % 2 == 0){
+					let	anchor = document.createElement('a');
+					anchor.href = link.href;
+					anchor.innerText = `Название ${j+1}-й ссылки`;
+					document.body.append(anchor);
+					document.write('<br>');
+					j++;
+				}
+			}
+			document.write('<br>');
+
+			document.write('Список ссылок:<br>');
+			for (let i = 0; i < document.body.getElementsByTagName('link').length; i++){
+				document.body.append(document.body.getElementsByTagName('link').item(i).innerText);
+				document.write('<br>');
+			}
+
+			document.write('<br>');
+			document.write('Количество анкоров: ' + document.body.getElementsByTagName('a').length + '<br>');
+			document.write('Количество ссылок: ' + document.body.getElementsByTagName('link').length + '<br>');
+			document.write('<br>');
+			document.write('Содержимое первого анкора:<br>' + document.body.getElementsByTagName('a').item(0).innerHTML);
+
+			document.write('<br>');
+			document.write('<br>');
+			//let img =[];
+			let img = document.createElement('img');	
+			img.id = '0';
+			img.style.height = '50px';
+			img.style.width = '50px';
+			document.body.append(img);
+			document.write('<br>');
+			img = document.createElement('img');
+			img.id = '1';
+			img.style.height = '90px';
+			img.style.width = '150px';
+			document.body.append(img);
+			document.write('<br>');
+			img = document.createElement('img');
+			img.id = '2';
+			img.style.height = '120px';
+			img.style.width = '60px';
+			document.body.append(img);
+			document.write('<br>');
+
+			document.write('Количество картинок: ' + document.body.getElementsByTagName('img').length);
+			document.write('<br>');
+
+			document.write('Ширина первой картинки: ' + document.body.getElementsByTagName('img').item(0).width + 'px');
+			document.write('<br>');
+
+			let maxWidth = document.body.getElementsByTagName('img').item(0).width;
+			let sumWidth = document.body.getElementsByTagName('img').item(0).height;
+			for (let i = 1; i < document.body.getElementsByTagName('img').length; i++){
+				if (document.body.getElementsByTagName('img').item(i).width > maxWidth){
+					maxWidth = document.body.getElementsByTagName('img').item(i).width;
+				}
+				sumWidth += document.body.getElementsByTagName('img').item(i).height;
+			}
+
+			document.write('Максимальная ширина картинки: ' + maxWidth + 'px');
+			document.write('<br>');
+
+			document.write('Сумма высот всех картинок: ' + sumWidth + 'px');
+			document.write('<br>');
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "utf-8">
+		<title>first task</title>
+		<script>
+			let sentence = prompt('Введите предложение:', '');
+			while (sentence == null){
+				sentence = prompt('Введите предложение:', '');
+			}
+			let sumbCount = getSumbCount(sentence);
+			let wordCount = getWordCount(sentence);
+
+			let myUrl = window.location;
+			let myUrlFromGit = new URL('https://github.com/junnie1/web/blob/master/ex2.txt');
+			//myUrl = myUrlFromGit;
+			let pathArrayUrl = myUrl.pathname.split('/');
+			let fileExtension = pathArrayUrl[pathArrayUrl.length - 1].split('.');
+
+			let myUrlWithParams = new URL('https://google.com/search');
+			myUrlWithParams.searchParams.set('q', fileExtension[fileExtension.length - 1]);
+			myUrlWithParams.searchParams.set('qw', myUrl.protocol);
+
+			document.write(sentence + '<br>');
+			document.write('В исходном предложении ' + sentence.length + ' символов, включая пробелы.<br>')
+			document.write('В исходном предложении ' + sumbCount + ' символов БЕЗ пробелов.<br>')
+			document.write('В исходном предложении ' + wordCount + ' слов(а).<br><br>');
+
+			document.write('Ссылка на файл: ' + myUrl.href + '<br>');
+			document.write('Название протокола: ' + myUrl.protocol + '<br>');
+			document.write('Название файла: ' + pathArrayUrl[pathArrayUrl.length - 1] + '<br>');
+			document.write('Расширение файла: .' + fileExtension[fileExtension.length - 1] + '<br>');
+
+			document.write('Ссылка с параметрами: ' + myUrlWithParams + '<br>');
+
+			function getSumbCount(ourSentence){
+				if (ourSentence.length){
+					let sumbCount = 0;
+					for(let i = 0; i < ourSentence.length; i++)
+					{
+						if (ourSentence[i]==' ') continue;
+						sumbCount++;
+					}
+					return sumbCount;
+				} else return 0;
+			}
+			function getWordCount(ourSentence){
+				if (ourSentence.length){
+					let flag = 0;
+					let wordCount = 0;
+					for (let i = 0; i < ourSentence.length; i++){
+						if (ourSentence[i] != ' '){
+							if (flag) continue;
+							else{
+								flag = 1;
+								wordCount++;
+							}
+						} else flag = 0;
+					}
+					return wordCount;
+				} else return 0;
+			}
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
