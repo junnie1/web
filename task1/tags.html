@@ -6,39 +6,6 @@
 	</head>
 	<body>
 		<script>
-			let j = 0; //счетчик			
-			document.write('Список анкоров:<br>');
-			for (let i = 0; i < 5; i++){
-				let link = document.createElement('link');
-				document.body.append(link);
-				link.href = `https://vk.com/unchikovallet${i+1}`;
-				link.innerText = link.href;
-				if (i % 2 == 0){
-					let	anchor = document.createElement('a');
-					anchor.href = link.href;
-					anchor.innerText = `Название ${j+1}-й ссылки`;
-					document.body.append(anchor);
-					document.write('<br>');
-					j++;
-				}
-			}
-			document.write('<br>');
-
-			document.write('Список ссылок:<br>');
-			for (let i = 0; i < document.body.getElementsByTagName('link').length; i++){
-				document.body.append(document.body.getElementsByTagName('link').item(i).innerText);
-				document.write('<br>');
-			}
-
-			document.write('<br>');
-			document.write('Количество анкоров: ' + document.body.getElementsByTagName('a').length + '<br>');
-			document.write('Количество ссылок: ' + document.body.getElementsByTagName('link').length + '<br>');
-			document.write('<br>');
-			document.write('Содержимое первого анкора:<br>' + document.body.getElementsByTagName('a').item(0).innerHTML);
-
-			document.write('<br>');
-			document.write('<br>');
-			//let img =[];
 			let img = document.createElement('img');	
 			img.id = '0';
 			img.style.height = '50px';
@@ -79,6 +46,39 @@
 			document.write('Сумма высот всех картинок: ' + sumWidth + 'px');
 			document.write('<br>');
 
+
+			let countOnPage = 0; //на той же странице
+			let countOnAnother = 0; // на другие сайты	
+			document.write('Список анкоров:<br>');
+
+			for (let i = 0; i < 3; i++){
+				let anchor = document.createElement('a');
+				anchor.href = '#' + document.getElementsByTagName('img').item(i).id;
+				anchor.innerText = `${i+1} картинка`;
+				document.body.append(anchor);
+				document.write('<br>');
+				countOnPage++;
+			}	
+
+			document.write('Список ссылок:<br>');
+			for (let i = 0; i < 5; i++){
+				let anchor = document.createElement('a');
+				anchor.href = `https://vk.com/unchikovallet${i+1}`;
+				anchor.innerText = `Название ${i+1}-й ссылки`;
+				document.body.append(anchor);
+				document.write('<br>');
+				countOnAnother++;
+			}
+			document.write('<br>');
+
+		
+
+			document.write('<br>');
+			document.write('Количество анкоров: ' + countOnPage + '<br>');
+			document.write('Количество ссылок: ' + countOnAnother + '<br>');
+			document.write('<br>');
+			document.write('Содержимое первого анкора:<br>' + document.body.getElementsByTagName('a').item(0).innerHTML);
+			
 		</script>
 	</body>
 </html>
