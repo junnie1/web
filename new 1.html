@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<HTML>
+	<HEAD>
+		<TITLE>САЙТ МОЙ</TITLE>
+		<META CHARSET = "UTF-8">
+		<LINK REL = "STYLESHEET" TYPE = "TEXT/CSS" HREF = "STYLE.CSS"/>
+	</HEAD>
+	<BODY>
+		<H1 ALIGN = CENTER>ВСЕМ ПРИВЕТ, КТО ПРОСНУЛСЯ!</H1>
+		
+		<IMG SRC = "https://sun9-62.userapi.com/c205428/v205428212/37ab/PBtDxrNBGC8.jpg", ALT = "ЗДЕСЬ ДОЛЖНА БЫТЬ КАРТИНКА">
+		
+		
+		
+		<P>Таблица - 3-й вариант</P>
+		<TABLE BORDER = "1" BORDER = "70%" CELLPADDING = "40" BGCOLOR = "RED">
+			<TR>
+				<TD></TD>
+				<TD></TD>
+				<TD COLSPAN = "2"></TD>
+				<TD></TD>
+			</TR>
+			<TR>
+				<TD COLSPAN = "5"></TD>
+			</TR>
+			<TR>
+				<TD></TD>
+				<TD ROWSPAN = "3"></TD>
+				<TD></TD>
+				<TD ROWSPAN = "3"></TD>
+				<TD></TD>
+			</TR>
+			<TR>
+				<TD></TD>
+				<TD></TD>
+				<TD></TD>
+			</TR>
+			<TR>
+				<TD></TD>
+				<TD></TD>
+				<TD></TD>
+			</TR>
+		</TABLE>
+		
+		<FORM ACTION = "/servlet" METHOD = "GET" NAME = "TestForm">
+		<P>Введите имя и фамилию:</P>
+		<INPUT TYPE = "TEXT" NAME = "LASTNAME" SIZE = "30" VALUE = "Любовь Унчикова">
+		<P>Выберите товар:</P>
+		<SELECT NAME = "TOVAR">
+			<OPTION VALUE = "FEN"> Фен для волос </OPTION>
+			<OPTION VALUE = "FOOD" SELECTED> Вкусная еда </OPTION>
+			<OPTION VALUE = "PHONE"> Мобильный телефон </OPTION>
+		</SELECT>
+		<P>Выберите способ платежа:</P>
+		<INPUT TYPE = "RADIO" NAME = "PAY" VALUE = "BANK" CHECKED> Банковская карта <BR>
+		<INPUT TYPE = "RADIO" NAME = "PAY" VALUE = "MONEY"> Наличными курьеру <BR>
+		<P>Введите секретный номер телефона:</P>
+		<INPUT TYPE = "PASSWORD" WIDTH = "15" NAME = "NUMBER"><BR><BR>
+		<P>Выберите способ оповещения:</P>
+		<INPUT TYPE = "CHECKBOX" NAME = "SMS"> Прислать СМС <BR>
+		<INPUT TYPE = "CHECKBOX" NAME = "NOTE"> Оповещение на почту <BR>
+		<INPUT TYPE = "CHECKBOX" NAME = "CALL"> Позвонить по телефону <BR>
+
+		<INPUT TYPE = "SUBMIT" VALUE = "Отправить">
+		</FORM>
+		
+		<H2> Стили </H2>
+		<DIV></DIV>
+		<P ID = "SPECIAL"> ТЕКСТ В СТИЛЕ </P>
+	</BODY>
+</HTML>
