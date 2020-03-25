@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>task2</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: Times New Roman;
+		}
+
+		#createForm {
+			width: 250px;
+			border-color: black;
+			margin: 10px;
+		}
+
+		#createFunc {
+			display: none;
+			width: 1490px;
+			margin: 10px;
+		}
+		h4 {
+			font-weight: bold;
+			text-transform: uppercase;
+			text-align: center;
+			font-family: Georgia;
+			margin: 10px;
+		}		
+
+		p {
+			display: block;
+			margin-left: 15px;
+			margin-bottom: 5px;
+		}
+
+		input {
+			display: block;
+			margin: 15px;
+
+		}
+		select {
+			display: block;
+			margin-left: 15px;
+			margin-bottom: 10px;
+		}
+
+		button {
+			display: block;
+			background-color: pink;
+			font-weight: bold;
+			/*margin: 0 auto;*/
+			padding-left: 5px;
+			padding-right: 5px;
+			height: 40px;
+			width: 170px;
+			border-radius: 25px;
+			margin-bottom: 10px;
+			margin-left: 15px;
+			margin-top: 5px;
+		}
+
+		div {
+			display: inline-flex;
+			margin-left: 20px;
+			margin-right: 20px;
+		}
+
+		caption {
+			font-weight: bold;
+			text-transform: uppercase;
+			font-family: Georgia;
+			font-size: 25px;
+			margin: 5px;
+		}
+
+	</style>
+</head>
+<body>
+	<script>
+		const optionsStyleBorder = ['none', 'dotted', 'dashed', 'solid', 'double', 'groove', 'ridge'];
+		const optionsColors = ['black', 'red', 'dodgerblue', 'yellow', 'lime', 'mediumseagreen', 'deeppink', 'aqua', 'lightsalmon', 'violet', 'tan'];
+
+		let formForCreationTable = document.createElement('form');
+		formForCreationTable.id = 'createForm';
+		let randomStyleBorderTable = Math.floor(Math.random() * (optionsStyleBorder.length - 1) + 1);
+		formForCreationTable.style.border += '10px ' + optionsStyleBorder[randomStyleBorderTable];	
+		let randomBGColor = Math.floor(Math.random() * (optionsColors.length - 1) + 1);
+		formForCreationTable.style.backgroundColor = optionsColors[randomBGColor];
+
+		let labelCreateTable = document.createElement('h4');
+		labelCreateTable.innerText = 'Новая таблица';
+		let countCols = document.createElement('input');
+		let countRows = document.createElement('input');
+		let buttonCreate = document.createElement('button');
+		countCols.type = 'text';
+		countCols.maxLength = 3;
+		countCols.classList.add('classInputText');
+		countRows.type = 'text'; 
+		countRows.maxLength = 3;
+		countRows.classList.add('classInputText');
+		buttonCreate.type = 'button';
+		buttonCreate.innerText = 'Создать таблицу';
+		buttonCreate.onclick = function() {
+			document.getElementById('createForm').style.display = 'none';
+			document.getElementById('createFunc').style.display = 'block';
+			createTable(countRows.value, countCols.value);
+		}
+		let labelCols = document.createElement('p');
+		labelCols.innerText = 'Введите количество столбцов:';
+		let labelRows = document.createElement('p');
+		labelRows.innerText = 'Введите количество строк:';
+		formForCreationTable.appendChild(labelCreateTable);
+		formForCreationTable.appendChild(labelRows);
+		formForCreationTable.appendChild(countRows);
+		formForCreationTable.appendChild(labelCols);
+		formForCreationTable.appendChild(countCols);
+		formForCreationTable.appendChild(buttonCreate);
+		document.body.append(formForCreationTable);
+
+		let formForFunctions = document.createElement('form');
+		formForFunctions.id = 'createFunc';
+		let randomStyleBorderFunc = Math.floor(Math.random() * (optionsStyleBorder.length - 1) + 1);
+		formForFunctions.style.border = '10px ' + optionsStyleBorder[randomStyleBorderFunc];
+		let randomBGColorFunc = Math.floor(Math.random() * (optionsColors.length - 1) + 1);
+		formForFunctions.style.backgroundColor = optionsColors[randomBGColorFunc];
+		
+		let divFuncChange = document.createElement('div');
+		let divFuncAddLabel = document.createElement('div');
+		let divFuncDelRow = document.createElement('div');
+		let divFuncDelTable = document.createElement('div');
+		let divFuncMagic = document.createElement('div');
+		
+		let formFuncChange = document.createElement('form');
+		let labelFuncChange = document.createElement('h4');
+		labelFuncChange.innerText = 'Изменить границы таблицы';
+		let inputSize = document.createElement('input');
+		inputSize.type = 'text';
+		inputSize.classList.add('classInputText');
+		let selectStyleBorder = document.createElement('select');
+		for (let i = 0; i < optionsStyleBorder.length; i++){
+			let optnBorder = document.createElement('option');
+			optnBorder.innerText = optionsStyleBorder[i];
+			selectStyleBorder.appendChild(optnBorder);
+		}
+		selectStyleBorder.onchange = function() {
+			if (inputSize.value == ''){
+				buttonChange.innerText = 'Применить рамка ' + selectStyleBorder.value;	
+			} else {
+				buttonChange.innerText = 'Применить ' + inputSize.value + ' px и рамка double ' + selectStyleBorder.value;
+			}
+			
+		}
+		let buttonChange = document.createElement('button');
+		buttonChange.type = 'button';
+		buttonChange.id = 'changeTextOnButton';
+		buttonChange.innerText = 'Применить';
+		buttonChange.onclick = function() {
+			document.getElementById('table').style.fontSize = inputSize.value + 'px';
+			document.getElementById('table').style.border = selectStyleBorder.value;
+			for (let i = 0; i < document.body.getElementsByTagName('tr').length; i++){
+				document.body.getElementsByTagName('tr')[i].style.border = 'inherit';
+				document.body.getElementsByTagName('tr')[i].style.fontSize = 'inherit';
+				for (let j = 0; j < document.body.getElementsByTagName('tr')[i].getElementsByTagName('td').length; j++){
+					document.body.getElementsByTagName('tr')[i].getElementsByTagName('td')[j].style.border = 'inherit';
+					document.body.getElementsByTagName('tr')[i].getElementsByTagName('td')[j].style.fontSize = 'inherit';
+				}	
+			}
+		}
+		inputSize.oninput = function() {
+			if (selectStyleBorder.value == ''){
+				buttonChange.innerText = 'Применить ' + inputSize.value + ' px';	
+			} else {
+				buttonChange.innerText = 'Применить ' + inputSize.value + ' px и рамка double ' + selectStyleBorder.value;
+			} 
+		}
+		let labelInputSize = document.createElement('p');
+		labelInputSize.innerText = 'Введите размер шрифта:';
+		let labelSelectStyleBorder = document.createElement('p');
+		labelSelectStyleBorder.innerText = 'Задать вид рамки:';
+		formFuncChange.appendChild(labelFuncChange);
+		formFuncChange.appendChild(labelInputSize);
+		formFuncChange.appendChild(inputSize);
+		formFuncChange.appendChild(labelSelectStyleBorder);
+		formFuncChange.appendChild(selectStyleBorder);
+		formFuncChange.appendChild(buttonChange);
+		divFuncChange.appendChild(formFuncChange);
+
+		let formFuncAddLabel = document.createElement('form');
+		let labelFuncAddLabel = document.createElement('h4');
+		labelFuncAddLabel.innerText = 'Добавить заголовок'; 
+		let inputLabelTable = document.createElement('input');
+		inputLabelTable.type = 'text';
+		inputLabelTable.classList.add('classInputText');
+		let buttonAddLabel = document.createElement('button');
+		buttonAddLabel.type = 'button';
+		buttonAddLabel.innerText = 'Добавить';
+		buttonAddLabel.onclick = function() {
+			document.getElementById('labelTable').innerText = inputLabelTable.value;
+		}
+		let labelOfTable = document.createElement('p');
+		labelOfTable.innerText = 'Введите заголовок таблицы:';
+		formFuncAddLabel.appendChild(labelFuncAddLabel);
+		formFuncAddLabel.appendChild(labelOfTable);
+		formFuncAddLabel.appendChild(inputLabelTable);
+		formFuncAddLabel.appendChild(buttonAddLabel);
+		divFuncAddLabel.appendChild(formFuncAddLabel);
+
+		let formFuncDelRow = document.createElement('form');
+		let labelFuncDelRow = document.createElement('h4');
+		labelFuncDelRow.innerText = 'Удалить выбранную строку';
+		let inputNumberRow = document.createElement('input');
+		inputNumberRow.type = 'text';
+		inputNumberRow.classList.add('classInputText');
+		let buttonDelRow = document.createElement('button');
+		buttonDelRow.type = 'button';
+		buttonDelRow.innerText = 'Удалить';
+		buttonDelRow.onclick = function() {
+			if (inputNumberRow.value > 0 && inputNumberRow.value <= document.body.getElementsByTagName('tr').length){
+				document.body.getElementsByTagName('tr')[inputNumberRow.value - 1].remove();	
+			} else {
+				alert('Введено некорректное значение, попробуйте снова!');
+				inputNumberRow.value = '';
+			}
+		}
+		let labelNumberRow = document.createElement('p');
+		labelNumberRow.innerText = 'Введите номер строки:';
+		formFuncDelRow.appendChild(labelFuncDelRow);
+		formFuncDelRow.appendChild(labelNumberRow);
+		formFuncDelRow.appendChild(inputNumberRow);
+		formFuncDelRow.appendChild(buttonDelRow);
+		divFuncDelRow.appendChild(formFuncDelRow);
+
+		let formFuncDelTable = document.createElement('form');
+		let labelFuncDelTable = document.createElement('h4');
+		labelFuncDelTable.innerText = 'Удалить';
+		let buttonDelTable = document.createElement('button');
+		buttonDelTable.type = 'reset';
+		buttonDelTable.innerText = 'Удалить таблицу';
+		buttonDelTable.onclick = function() {
+			document.getElementById('table').remove();
+			document.getElementById('createFunc').style.display = 'none';
+			document.getElementById('createForm').style.display = 'block';
+			for (let i = 0; i < document.getElementsByClassName('classInputText').length; i++){
+				document.getElementsByClassName('classInputText')[i].value = '';
+			}
+			document.body.getElementsByTagName('select')[0].value = optionsStyleBorder[0];
+			document.getElementById('changeTextOnButton').innerText = 'Применить';
+		}
+		formFuncDelTable.appendChild(labelFuncDelTable);
+		formFuncDelTable.appendChild(buttonDelTable);
+		divFuncDelTable.appendChild(formFuncDelTable);
+
+
+		let formFuncMagic = document.createElement('form');
+		let labelFuncMagic = document.createElement('h4');
+		labelFuncMagic.innerText = 'Случайный выбор';
+		let buttonMagic = document.createElement('button');
+		buttonMagic.type = 'button';
+		buttonMagic.innerText = 'Применить магию!';
+		buttonMagic.onclick = function() {
+			let maxTr = document.body.getElementsByTagName('tr').length;
+			let randomTr = Math.floor(Math.random() * maxTr);
+			let maxTd = document.body.getElementsByTagName('tr')[0].getElementsByTagName('td').length;
+			let randomTd = Math.floor(Math.random() * maxTd);
+			let randomPx = Math.floor(Math.random() * (55 - 15 + 1) + 15);
+			document.body.getElementsByTagName('tr')[randomTr].getElementsByTagName('td')[randomTd].style.fontSize = randomPx + 'px';
+			let randomStyleBorder = Math.floor(Math.random() * optionsStyleBorder.length);
+			document.body.getElementsByTagName('tr')[randomTr].getElementsByTagName('td')[randomTd].style.border = optionsStyleBorder[randomStyleBorder];
+			let randomStyleBorderTable = Math.floor(Math.random() * optionsStyleBorder.length);
+			document.getElementById('table').style.border = optionsStyleBorder[randomStyleBorderTable];
+			let randomBGColor = Math.floor(Math.random() * optionsColors.length);
+			document.body.getElementsByTagName('tr')[randomTr].getElementsByTagName('td')[randomTd].style.backgroundColor = optionsColors[randomBGColor];
+			let randomColorText = Math.floor(Math.random() * optionsColors.length);
+			document.body.getElementsByTagName('tr')[randomTr].getElementsByTagName('td')[randomTd].style.color = optionsColors[randomColorText];
+			let randomYesOrNo = Math.random();
+			if (randomYesOrNo < 0.25 && document.body.getElementsByTagName('tr')[randomTr].getElementsByTagName('td')[randomTd].innerText != '') {
+					document.body.getElementsByTagName('tr')[randomTr].getElementsByTagName('td')[randomTd].innerText = '';
+					let formCell = document.createElement('form');
+					let inputText = document.createElement('input');
+					let inputButton = document.createElement('button');
+					inputText.type = 'textarea';
+					inputButton.type = 'button';
+					inputButton.innerText = 'Save';
+					inputButton.style.display = 'block';
+					inputButton.onclick = function() {
+						formCell.remove();
+						document.body.getElementsByTagName('tr')[randomTr].getElementsByTagName('td')[randomTd].innerText = inputText.value;
+					}
+					formCell.appendChild(inputText);
+					formCell.appendChild(inputButton);
+					document.body.getElementsByTagName('tr')[randomTr].getElementsByTagName('td')[randomTd].appendChild(formCell);
+			} 
+		}
+		formFuncMagic.appendChild(labelFuncMagic);
+		formFuncMagic.appendChild(buttonMagic);
+		divFuncMagic.appendChild(formFuncMagic);
+
+		formForFunctions.appendChild(divFuncChange);
+		formForFunctions.appendChild(divFuncAddLabel);
+		formForFunctions.appendChild(divFuncDelRow);
+		formForFunctions.appendChild(divFuncDelTable);
+		formForFunctions.appendChild(divFuncMagic);
+		document.body.append(formForFunctions);
+
+		function createTable(cntRows, cntCols){
+			let table = document.createElement('table');
+			table.id = 'table';
+			let labelTable = document.createElement('caption');
+			labelTable.innerText = '';
+			labelTable.id = 'labelTable';
+			table.appendChild(labelTable);
+			for (let i = 0; i < cntRows; i++){
+				let row = document.createElement('tr');
+				for (let j = 0; j < cntCols; j++) {
+					let tableCell = document.createElement('td');
+					let formCell = document.createElement('form');
+					let inputText = document.createElement('input');
+					let inputButton = document.createElement('button');
+					inputText.type = 'textarea';
+					inputButton.type = 'button';
+					inputButton.innerText = 'Save';
+					inputButton.onclick = function() {
+						formCell.remove();
+						tableCell.innerText = inputText.value;
+					}
+					formCell.appendChild(inputText);
+					formCell.appendChild(inputButton);
+					tableCell.appendChild(formCell);
+					row.appendChild(tableCell);
+				}
+				table.appendChild(row);
+			}
+			document.body.append(table);
+		}
+	</script>
+</body>
+</html>
