@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jQuery</title>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>
+				<div id='mage'>
+					<div class='imgs'>
+						<img src='./mage.png'>
+					</div>
+					<h2>Mage</h2>
+					<div class='description'>
+						<p>My magic will tear you apart!</p>
+						<p>No other hero wields the arcane with as much skill and raw power as a Mage. Using their unrivaled array of spells, Mages can wipe entire boards of minions, deal devastating amounts of damage directly to their enemy, or summon creatures of pure energy to do their bidding.</p>
+					</div>
+					<div class='links'>
+						<a href='http://playhearthstone.com/en-gb/heroes/mage'>More information about Mage...</a>
+					</div>
+					<br><br><br>
+				</div>
+			</td>
+			<td>
+				<input type='button' class='button' id='fadeOut' value='Fade Out'>
+			</td>
+			<td>
+				<form>
+					<p>Enter username:</p>
+					<input type='text' name='nameHero' size='25'>
+					<p>Pick a hero:</p>
+					<select name='heroes'>
+						<option value='mage'>Mage Jaina</option>
+						<option value='rogue'>Rogue Valeera</option>
+						<option value='warrior'>Warrior Garrosh</option>
+						<option value='druid'>Druid Malfurion</option>
+					</select>
+					<br><p></p>
+					<input type='button' class='button' id='change' value='Change and save'>
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div id='rogue'>
+					<div class='imgs'>
+						<img src='./rogue.png'>
+					</div>
+					<h2>Rogue</h2>
+					<div class='description'>
+						<p>Watch your back!</p>
+						<p>Using unseen blade, blinding speed, and subtle poison, Rogues can dispatch their enemies before escaping without a trace. Unleash a devastating chain of minions, spells, and attacks all within a single turn.</p>
+					</div>
+					<div class='links'>
+						<a href='http://playhearthstone.com/en-gb/heroes/rogue'>More information about Rogue...</a>
+					</div>
+					<br><br><br>
+				</div>
+			</td>
+			<td>
+				<input type='button' class='button' id='fadeTo' value='Fade To'>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div id='warrior'>
+					<div class='imgs'>
+						<img src='warrior.png'>
+					</div>
+					<h2>Warrior</h2>
+					<div class='description'>
+						<p>Victory or death!</p>
+						<p>Seasoned fighters of unparalleled prowess, Warriors have mastery over an arsenal of weaponry and armor, allowing them to be both deadly combatants and formidable defenders. Taking damage only serves to enrage the Warrior and his Minions, triggering powerful effects that further enhance their fearsome abilities.</p>
+					</div>
+					<div class='links'>
+						<a href='http://playhearthstone.com/en-gb/heroes/warrior'>More information about Warrior...</a>
+					</div>
+					<br><br><br>
+				</div>
+			</td>
+			<td>
+				<input type='button' class='button' id='hide' value='Hide'>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div id='druid'>
+					<div class='imgs'>
+						<img src='druid.png'>
+					</div>
+					<h2>Druid</h2>
+					<div class='description'>
+						<p>Nature will rise against you!</p>
+						<p>Preserve the balance by taking on the many forms of the wild and unleashing nature’s wrath upon your enemies. Druids are flexible combatants with nearly limitless choice in how to handle their opponents. Employ buffs, compel beasts, harness healing powers, or sling damaging spells against anything that threatens the natural order.</p>
+					</div>
+					<div class='links'>
+						<a href='http://playhearthstone.com/en-gb/heroes/druid?'>More information about Druid...</a>
+					</div>
+					<br><br><br>
+				</div>
+			</td>
+			<td>
+				<input type='button' class='button' id='slideUp' value='Slide Up'>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div id='priest'>
+					<div class='imgs'>
+						<img src='priest.png'>
+					</div>
+					<h2>Priest</h2>
+					<div class='description'>
+						<p>Light smiles upon the just!</p>
+						<p>The Light calls, but shadows whisper. Heroes of righteousness, Priests have unmatched healing potential and can bestow powerful holy enchantments on their minions. However, there is no light without dark. Priests can also tap into the shadows to manipulate the minds of their enemies and deal mortifying psychic damage.</p>
+					</div>
+					<div class='links'>
+						<a href='http://playhearthstone.com/en-gb/heroes/priest'>More information about Priest...</a>
+					</div>
+				</div>
+			</td>
+			<td>
+				<input type='button' class='button' id='slideToggle' value='Slide Toggle'>
+			</td>
+		</tr>
+	</table>
+	<br><br>
+	<div class='ajaxGet'>
+		<input type='button' class='button' id='refresh' value='Refresh the page'>
+	</div>
+	<br><br><br>
+	<div class='ajaxGetJSON'>
+		<input type='button' class='button' id='refreshJSON' value='JSON'>
+	</div>
+	<script type="text/javascript" src='jsQuery.js'></script>
+</body>
+</html>
